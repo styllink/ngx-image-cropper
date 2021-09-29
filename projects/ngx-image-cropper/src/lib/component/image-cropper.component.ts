@@ -183,7 +183,7 @@ export class ImageCropperComponent implements OnChanges, OnInit {
 
   ngOnInit(): void {
     this.settings.stepSize = this.initialStepSize;
-    this.activatePinchGesture();
+    // this.activatePinchGesture();
   }
 
   private reset(): void {
@@ -373,8 +373,8 @@ export class ImageCropperComponent implements OnChanges, OnInit {
     };
   }
 
-  @HostListener('document:mousemove', ['$event'])
-  @HostListener('document:touchmove', ['$event'])
+  @HostListener('mousemove', ['$event'])
+  @HostListener('touchmove', ['$event'])
   moveImg(event: any): void {
     if (this.moveStart.active) {
       if (event.stopPropagation) {
@@ -487,8 +487,8 @@ export class ImageCropperComponent implements OnChanges, OnInit {
     }
   }
 
-  @HostListener('document:mouseup')
-  @HostListener('document:touchend')
+  @HostListener('mouseup')
+  @HostListener('touchend')
   moveStop(): void {
     if (this.moveStart.active) {
       this.moveStart.active = false;
